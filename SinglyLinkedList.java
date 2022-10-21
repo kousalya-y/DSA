@@ -1,11 +1,13 @@
+import java.time.chrono.HijrahEra;
 import java.util.logging.Handler;
 
 public class SinglyLinkedList{
     private Node head;
+
     private static class Node{
         private int data;
         private Node next;
-        public Node(int data){
+        private Node(int data){
             this.data = data;
             this.next=null;
         }
@@ -22,45 +24,99 @@ public class SinglyLinkedList{
         thirdn.next=fourthn;
         System.out.println("Print the list:");
         slist.printList(); 
+        System.out.println();
 
         System.out.println("Find the length:");
-        slist.Findlength();
+        slist.Findlength();        System.out.println();
+
 
         System.out.println("Insert in the begining:");
-        slist.insertatBegin(10);
+        slist.insertatBegin(10);        System.out.println();
+
 
         System.out.println("Insert at the end:");
-        slist.insertatEnd(20);
+        slist.insertatEnd(20);        System.out.println();
+
 
         System.out.println("Insert at a particular position:");
-        slist.insertatPosition(30, 3);
+        slist.insertatPosition(30, 3);        System.out.println();
+
 
         System.out.println("Delete the first element:");
-        slist.deleteFirst();
+        slist.deleteFirst();        System.out.println();
+
 
         System.out.println("Delete the last element:");
-        slist.deleteEnd(); 
+        slist.deleteEnd();         System.out.println();
+
 
         System.out.println("Delete the element at a particular position:");
-        slist.deletePos(2);
+        slist.deletePos(2);        System.out.println();
+
 
         System.out.println("Insert in the begining:");
         slist.insertatBegin(28);
-        slist.insertatBegin(23);
+        slist.insertatBegin(28);
         slist.insertatBegin(78);
         slist.insertatBegin(98);
+        System.out.println();
 
         System.out.println("Insert 100 at position 5:");
-        slist.insertatPosition(100,5);           
+        slist.insertatPosition(100,5);  
+        System.out.println();
+         
  
         System.out.println("Search and element:");
         slist.searchEl(5);
+        System.out.println();
+
 
         System.out.println("Find the middle element");
         slist.findMiddle();
+        System.out.println();
+
 
         System.out.println("remove element by key:");
         slist.removeKeyEl(1);
+        System.out.println();
+
+        System.out.println("Reverse the list:");
+        slist.reverseList();
+        System.out.println();
+
+        System.out.println("Find the nth element from the end of the list:");
+        slist.nthfind(5);        System.out.println();
+
+        System.out.println("Remove duplicates from a sorted list:");
+        slist.remDupSlist();        System.out.println();
+    }
+
+    private void nthfind(int n) {
+        Node mainPtr = head;
+        Node refPtr = head;
+        int count =0;
+        while(count < n){
+            refPtr = refPtr.next;
+            count++;
+        }
+        while(refPtr != null){
+            refPtr = refPtr.next;
+            mainPtr = mainPtr.next;
+        }
+        System.out.println(mainPtr.data);
+    }
+
+    private void remDupSlist() {
+        Node temp = head;
+        while(temp!=null && temp.next!=null){
+            if(temp.data == temp.next.data){
+                temp.next = temp.next.next;
+            }
+            else{
+                temp = temp.next;
+            }
+        } 
+        printList();
     }
 
     public void printList(){
@@ -83,14 +139,14 @@ public class SinglyLinkedList{
         System.out.println("Length of the list : "+ count);
 }
     public void insertatBegin(int num){
-        System.out.println("Insert at the begining");
+       // System.out.println("Insert at the begining");
         Node bNode = new Node(num);
         bNode.next=head;
         head=bNode;
         printList();
     }
     public void insertatEnd(int num){
-        System.out.println("Insert at the end");
+       // System.out.println("Insert at the end");
         Node bNode = new Node(num);
         Node temp=head;
         if(head==null){
@@ -102,7 +158,7 @@ public class SinglyLinkedList{
             temp=temp.next;
         }
         temp.next=bNode;
-        System.out.println("After insertion at the end");
+       // System.out.println("After insertion at the end");
         printList();
     }
     public void insertatPosition(int num, int pos){
@@ -220,6 +276,23 @@ public void removeKeyEl(int key){
     System.out.println("List after removing the element " + key);
     printList();
 }
+
+    public void reverseList(){
+        if(head == null){
+            return;
+        }
+        Node prev = null;
+        Node next = null;
+        Node current =  head;
+        while(current != null){
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+        System.out.println("List after reversing:");
+        printList();
+    }
 }
-        
-    
+

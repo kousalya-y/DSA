@@ -1,0 +1,34 @@
+1.how to sort a list - sorting alg
+how to remove duplicates in sorted / unsorted list
+Access modifiers
+
+
+
+no of partitions = no of pointers with +1 speed
+
+1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
+    s 
+         2s
+3s
+4s
+                   
+1   2   3   4   5   6   7   8   9
+        s
+                2s
+                        3s                 
+                                4s  
+                                    
+                              s - > head + n
+                              f -> start of the nth partition
+
+divide in to 3 halfs
+sp - > 1n
+fp -> 3n
+
+l ->l/3->
+
+
+
+
+        System.out.println("Insert a node in a sorted list:");
+        slist.insertInSortList(10);        System.out.println();
