@@ -38,6 +38,7 @@ public class BST110 {
             else{
                 System.out.println("not found");
             }
+
         }
 
     private BST110.Node searchELement(BST110.Node root2, int i) {
